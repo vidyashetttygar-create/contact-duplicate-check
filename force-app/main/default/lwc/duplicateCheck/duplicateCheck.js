@@ -38,7 +38,6 @@ export default class ContactDuplicateChecker extends LightningElement {
                 console.error('Error:', error);
             })
             .finally(() => {
-                this.Checked = true;  // mark as checked
                 this.isLoading = false;
             });
     }
