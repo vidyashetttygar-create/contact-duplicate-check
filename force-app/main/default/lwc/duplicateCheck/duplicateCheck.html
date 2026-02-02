@@ -1,0 +1,36 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_medium">
+            <div style="display:flex; justify-content:center; margin-bottom:20px;">
+                <lightning-button
+                    variant="brand"
+                    label="Check Duplicates"
+                    onclick={handleClick}>
+                </lightning-button>
+            </div>
+
+            <template if:true={isLoading}>
+                <div style="text-align:center; margin-top:20px;">
+                    <lightning-spinner alternative-text="Checking duplicates..." size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <template if:true={hasDuplicates}>
+                <div style="margin-top:20px;">
+                    <lightning-datatable
+                        key-field="Id"
+                        data={data}
+                        columns={columns}
+                        hide-checkbox-column>
+                    </lightning-datatable>
+                </div>
+            </template>
+
+            <template if:false={hasDuplicates}>
+                <p style="margin-top:20px; text-align:center">
+                    No duplicate contacts found
+                </p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
