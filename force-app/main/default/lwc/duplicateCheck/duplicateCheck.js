@@ -4,7 +4,6 @@ import findDuplicates from '@salesforce/apex/DuplicateContact.findDuplicates';
 export default class ContactDuplicateChecker extends LightningElement {
     @api recordId;
     data = [];
-    Checked = false;
     isLoading = false;
     error;
 
@@ -20,7 +19,6 @@ export default class ContactDuplicateChecker extends LightningElement {
     ];
 
     handleClick() {
-        this.Checked = false;   // reset state before call
         this.isLoading = true;
         this.data = [];
 
