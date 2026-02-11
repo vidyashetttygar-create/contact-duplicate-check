@@ -2,6 +2,7 @@ public with sharing class DuplicateContact {
 
     @AuraEnabled(cacheable=true)
     public static List<Contact> findDuplicates(Id contactId) {
+    try {
         Contact c = [
             SELECT Id, Name, Email, Phone,Normalised_Phone__c
             FROM Contact
@@ -34,7 +35,10 @@ public with sharing class DuplicateContact {
         }
 
         return Contacts;
-
+      } 
+      catch (Exception e) {
+            throw new AuraHandledException('An error occurred while checking duplicates: ' + e.getMessage());
+      }
 
 }
 }
